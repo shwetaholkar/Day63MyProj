@@ -1,0 +1,62 @@
+﻿@using Day63MyProj.Data
+@model Day63MyProj.Models.ViewModel.UserViewModel
+@inject UserManagementContext context
+
+<h2>Create New User</h2>
+
+<form method="post">
+    <table class="table table-bordered">
+        <tr>
+            <th>First Name</th>
+            <td><input asp-for="FirstName" /></td>
+        </tr>
+        <tr>
+            <th>Last Name</th>
+            <td><input asp-for="LastName" /></td>
+        </tr>
+        <tr>
+            <th>Date of Birth</th>
+            <td><input asp-for="DateOfBirth" /></td>
+        </tr>
+        <tr>
+            <th>Pan Number</th>
+            <td><input asp-for="Pan" /></td>
+        </tr>
+        <tr>
+            <th>Address</th>
+            <td><input asp-for="Address" /></td>
+        </tr>
+        <tr>
+            <th>Gender</th>
+            <td><input asp-for="Gender" /></td>
+        </tr>
+        <tr>
+            <th>Mobile Number</th>
+            <td><input asp-for="MobileNumber" /></td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td><input asp-for="Email" /></td>
+        </tr>
+        <tr>
+            <th>Comments</th>
+            <td><input asp-for="Comments" /></td>
+        </tr>
+        <tr>
+            <th>Department-Ref-Id</th>
+            <td>
+            @{
+                //using var context = new UserManagementContext();
+                var data = context.Departments.ToList();
+                var selectBox = new SelectList(data, "Id", "Name");
+            }
+            <select asp-for="DepartmentRefId" asp-items="selectBox" class="form-control"></select>
+
+            </td>
+        </tr>
+    </table>
+    <input type="submit" value="Save New User" class="btn btn-success" />
+    <a asp-action="Index" class="btn btn-primary">Back to Listing</a>
+</form>
+
+

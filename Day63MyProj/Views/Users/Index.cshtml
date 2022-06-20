@@ -1,0 +1,54 @@
+﻿@using Day63MyProj.Data
+@model List<Day63MyProj.Models.ViewModel.UserViewModel>
+@inject UserManagementContext context
+
+<h2>Users</h2>
+
+<a asp-action="Create" class="btn btn-success mb-2">Create New User</a>
+
+<table class=" table table-bordered">
+    <tr>
+        <th>Id</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Date of Birth</th>
+        <th>Gender</th>
+        <th>Mobile Number</th>
+        <th>Email</th>
+        <th>Department-Ref-Id</th>
+    </tr>
+
+    @foreach (var userViewModel in Model)
+    {
+        <tr>
+            <td>@userViewModel.Id</td>
+            <td>@userViewModel.FirstName</td>
+            <td>@userViewModel.LastName</td>
+            <td>@userViewModel.DateOfBirth</td>
+            <td>@userViewModel.Gender</td>
+            <td>@userViewModel.MobileNumber</td>
+            <td>@userViewModel.Email</td>
+            <td>@userViewModel.DepartmentRef.Name</td>
+
+           @* <td>
+                @{
+
+                    var data = context.Departments.ToList();
+                    var selectBox = new SelectList(data, "Id", "Name",@userViewModel.DepartmentRefId);
+            
+                     <select asp-for="@userViewModel.DepartmentRefId" asp-items="selectBox"></select>
+                  // <label asp-for="@userViewModel.DepartmentRefId" asp-items="selectBox"> </label>
+
+                }
+            </td>*@
+
+            <td>
+                <a asp-controller="Users" asp-action="Details" asp-route-id="@userViewModel.Id" class="btn btn-primary">Details</a>
+                <a asp-controller="Users" asp-action="Edit" asp-route-id="@userViewModel.Id" class="btn btn-warning">Edit</a>
+                <a asp-controller="Users" asp-action="Delete" asp-route-id="@userViewModel.Id" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+
+    }
+</table>
+

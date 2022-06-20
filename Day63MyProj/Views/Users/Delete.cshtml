@@ -1,0 +1,57 @@
+﻿@model Day63MyProj.Models.ViewModel.UserViewModel
+
+<h2>Delete User</h2>
+
+<form method="post" asp-action="DeleteUser">
+    <table class="table table-bordered">
+        <tr>
+            <th>User Id</th>
+            <td>@Model.Id</td>
+        </tr>
+        <tr>
+            <th>First Name</th>
+            <td>@Model.FirstName</td>
+        </tr>
+        <tr>
+            <th>Last Name</th>
+            <td>@Model.LastName</td>
+        </tr>
+        <tr>
+            <th>Date of Birth</th>
+            <td>@Model.DateOfBirth</td>
+        </tr>
+        <tr>
+            <th>Pan Number</th>
+            <td>@Model.Pan</td>
+        </tr>
+        <tr>
+            <th>Address</th>
+            <td>@Model.Address</td>
+        </tr>
+        <tr>
+            <th>Gender</th>
+            <td>@Model.Gender</td>
+        </tr>
+        <tr>
+            <th>Mobile Number</th>
+            <td>@Model.MobileNumber</td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td>@Model.Email</td>
+        </tr>
+        <tr>
+            <th>Comments</th>
+            <td>@Model.Comments</td>
+        </tr>
+        <tr>
+            <th>Department-Ref-Id</th>
+            <td>@Model.DepartmentRefId</td>
+        </tr>
+    </table>
+
+    <input type="hidden" asp-for="Id" />
+    <input type="submit" value="Confirm Delete" class="btn btn-danger" />
+    <a asp-action="Index" class="btn btn-primary">Back to Listing</a>
+
+</form>
